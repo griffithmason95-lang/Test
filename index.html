@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>boot.EXE</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00FF00;
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+    }
+
+    #boot-screen {
+      white-space: pre-wrap;
+      font-size: 16px;
+    }
+
+    .blinking-cursor::after {
+      content: "_";
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="boot-screen" class="blinking-cursor"></div>
+  <script>
+    const bootText = [
+      "Initializing system...",
+      "Loading drivers...",
+      "Mounting floppy disk...",
+      "Executing game.exe...",
+      "Launching DOS...",
+      "Welcome to DOS."
+    ];
+
+    const screen = document.getElementById("boot-screen");
+    let i = 0;
+
+    function typeLine() {
+      if (i < bootText.length) {
+        screen.textContent += bootText[i] + "\n";
+        i++;
+        setTimeout(typeLine, 800);
+      }
+    }
+
+    typeLine();
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    // Redirect after delay
+    window.onload = function() {
+      setTimeout(function() {
+        window.location.href = "game.html"; // Replace with your target file
+      }, 3000); // 3-second delay
+    };
+  </script>
+</head>
+<body>
+</body>
+</html>
